@@ -15,9 +15,10 @@ if [ ! -e "/media/openvpn/certs/dhparam.pem" ]; then
     openssl dhparam -out /media/openvpn/certs/dhparam.pem 4096
 fi
 
-openvpn --help | grep push
-if [ $1 = openvpn]; then
-    openvpn --push "dhcp-option DNS $VPN_DNS_SERVER"
+if [ "$*" = openvpn ]; then
+    exec openvpn \
+        --config "/etc/openvpn/server/openvpn-server.conf" \
+        --push "dhcp-option DNS $VPN_DNS_SERVER"
 else
     exec "$@"
 fi

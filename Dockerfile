@@ -10,4 +10,4 @@ COPY entrypoint.sh /entrypoint.sh
 ENV VPN_DNS_SERVER="8.8.8.8"
 
 ENTRYPOINT [ "/entrypoint.sh" ]
-CMD [ "openvpn", "/etc/openvpn/server/openvpn-server.conf" ]
+CMD [ "openvpn" ]
