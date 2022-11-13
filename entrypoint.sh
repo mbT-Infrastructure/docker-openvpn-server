@@ -8,7 +8,7 @@ mkdir --parents /media/openvpn/certs
 #     mknod /dev/net/tun c 10 200
 # fi
 
-# iptables --table nat --append POSTROUTING --out-interface eth0 --jump MASQUERADE
+iptables --table nat --append POSTROUTING --source 192.168.191.0/24 --out-interface eth0 --jump MASQUERADE
 
 
 if [ ! -e "/media/openvpn/certs/dhparam.pem" ]; then

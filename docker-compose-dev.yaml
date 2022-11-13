@@ -5,7 +5,10 @@ services:
   openvpn-server:
     container_name: openvpn-server
     build: .
-    privileged: true
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun
     volumes:
       - ./data:/media/openvpn
     ports:
