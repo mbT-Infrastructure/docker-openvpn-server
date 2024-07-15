@@ -1,15 +1,12 @@
-version: "3.8"
-
 services:
-
-  openvpn-server:
-    container_name: openvpn-server
-    build: .
-    cap_add:
-      - NET_ADMIN
-    devices:
-      - /dev/net/tun
-    volumes:
-      - ./data:/media/openvpn
-    ports:
-      - "1194:1194/udp"
+    openvpn-server:
+        container_name: openvpn-server
+        build: .
+        cap_add:
+            - NET_ADMIN
+        devices:
+            - /dev/net/tun
+        volumes:
+            - ./data-local:/media/openvpn
+        ports:
+            - "127.0.0.1:1194:1194/udp"
